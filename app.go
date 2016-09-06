@@ -12,6 +12,7 @@ import (
 
 type Package struct {
   Name string
+  Size int64
 }
 
 const rootDirectory = "/resources"
@@ -27,7 +28,7 @@ func getPackages(path string)([]Package, error) {
   packages := make([]Package, 0, len(files))
 
   for _, file := range files {
-    packages = append(packages, Package{Name: file.Name()})
+    packages = append(packages, Package{Name: file.Name(), Size: file.Size()})
   }
 
   return packages, nil
